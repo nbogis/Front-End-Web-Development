@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- make it scale for different device sizes. content will match the device width -->
+    <title>Nidaa Bugis Portfolio</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container text-capitalize">
+      <!-- profile picture and name -->
+      <div class="row">
+        <div class="col-md-3">
+          <img class="img-responsive img-circle title-logo img-responsive" src="images_src/profile.jpg" alt="Nidaa profile picture">
+        </div>
+        <header class="col-md-8 text-right around-margin">
+          <h1 class="title-super text-thin text-uppercase">Nidaa Bugis</h1>
+          <h2 class="h2color">masters of science in computer engineering</h2>
+        </header>
+      </div>
+     <!-- horizontal ruler -->
+      <div class="row">
+        <div class="col-md-12">
+          <img class="img-responsive" src="http://calvaryfletcher.org/old/images/compressed%20narrow%20blue%20beveled%20horizontal%20line-7.png"
+          srcset="http://calvaryfletcher.org/old/images/compressed%20narrow%20blue%20beveled%20horizontal%20line-7.png" alt="horizontal ruler">
+        </div>
+      </div>
+      <!-- big picture -->
+      <div class="row">
+        <div class="col-md-12">
+          <img class="img-responsive big-pic center-block" src="images/big-pic-700x488_1x.jpg" srcset="images/big-pic-700x488_1x.jpg 1x, images_src/big-pic.jpg 2x" alt="Nidaa in a SLU-madrid poster">
+        </div>
+      </div>
+      <!-- horizontal ruler -->
+      <div class="row">
+        <div class="col-md-12">
+          <img class="img-responsive" src="http://calvaryfletcher.org/old/images/compressed%20narrow%20blue%20beveled%20horizontal%20line-7.png" alt="horizontal ruler">
+        </div>
+      </div>
+      <!-- Education header -->
+      <div class="row center-block">
+        <div class="col-12">
+          <h2 class="h2font-size"> Education </h2>
+          <p>(click an image for more info about the school)</p>
+        </div>
+      </div>
+      <!-- schools info -->
+      <div class="row text-center">
+        <div class="col-md-4">
+          <img class="img-responsive center-block resize-img" src="images/gwu-163x163_1x.png" srcset="images/gwu-163x163_1x.png 1x, images_src/GWU.png 2x"
+          alt="George Washington University logo" data-toggle="modal" data-target=".school1">
+          <h3>The George Washington University</h3>
+          <p>Masters of Science in Computer Engineering</p>
+        </div>
+        <div class="col-md-4">
+          <img class="img-responsive center-block resize-img" src="images/slu-182x247_1x.png" srcset="images/slu-182x247_1x.png 1x, images_src/slu.bmp 2x"
+          alt="Saint Louis University logo" data-toggle="modal" data-target=".school2">
+          <h3>Saint Louis University</h3>
+          <p>Bachelors of Science in Computer Engineering</p>
+        </div>
+        <div class="col-md-4">
+          <img class="img-responsive center-block resize-img" src="images/ksamadrid-236x246_1x.jpg" srcset="images/ksamadrid-236x246_1x.jpg 1x, images_src/ksamadrid.jpg 2x" alt="Saudi School in Madrid logo" data-toggle="modal" data-target=".school3">
+          <h3>The Saudi School in Madrid-spain</h3>
+          <p>High School Diploma in Science</p>
+        </div>
+      </div>
+    </div>
+    <!-- Modal school1 -->
+    <div class="modal fade school1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="myModalLabel1">The George Washington University</h2>
+          </div>
+          <div class="modal-body">
+            <img class="img-responsive resize-img center-img" src="images/gwu-163x163_1x.png" srcset="images/gwu-163x163_1x.png 1x, images_src/GWU.png 2x" alt="george washington university logo">
+            <p>Attending Period: January 2013 - December 2014</p>
+            <p>Degree: Masters of Science in Computer Engineering</p>
+            <p>concentration: computer architecture and High-Performance computing</p>
+            <p>School location: Washington, DC USA</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal school2 -->
+    <div class="modal fade school2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="myModalLabel2">Saint Louis University</h2>
+          </div>
+          <div class="modal-body">
+            <img class="img-responsive resize-img center-img" src="images/slu-182x247_1x.png" srcset="images/slu-182x247_1x.png 1x, images_src/slu.bmp 2x"
+            alt="saint louis univeristy logo">
+            <p>Attending Period: August 2008 - August 2012</p>
+            <p>Degree: Bachelors of Science in Computer Engineering</p>
+            <p>Minors: computer science and engineering math</p>
+            <p>School location: Saint Louis, MO USA</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal school3 -->
+    <div class="modal fade school3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="myModalLabel3">Saudi School in Madrid-Spain</h2>
+          </div>
+          <div class="modal-body">
+            <img class="img-responsive resize-img center-img" src="images/ksamadrid-236x246_1x.jpg" srcset="images/ksamadrid-236x246_1x.jpg 1x, images_src/ksamadrid.jpg 2x" alt="saudi school in madrid logo">
+            <p>Attending Period: August 2004 - June 2008</p>
+            <p>Diploma: High school </p>
+            <p>School location: Madrid, Spain</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+
+</html>

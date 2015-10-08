@@ -1,0 +1,93 @@
+/*default values for whole html body*/
+body {
+  background-color: #bbdefb;
+  font-family: "Sorts Mill Goudy", serif;
+  color: #1565c0;
+  font-weight: 300;
+  margin: 4vh;
+}
+
+p {
+  font-size: 2vw;
+  color: #1e88e5;
+}
+
+h2 {
+  font-size: 4vw;
+}
+
+img {
+  margin: 2vh 0 3vh;
+  max-width: 100%;
+}
+
+.around-margin {
+  margin: 5% 0 5%;
+}
+
+.text-thin {
+  font-weight: 100;
+}
+
+.title-super {
+  text-align: right;
+  font-size: 7vw;
+}
+
+.title-logo {
+  border: 1vh solid #0d47a1;
+  margin: 5vh;
+  width: 30vw;
+}
+
+.h2color{
+  color: #1e88e5;
+}
+
+@media screen and (min-width: 150px) {
+  .title-logo,
+  .text-right,
+  .title-super {
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+.big-pic {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  width: 80vw;
+}
+
+.resize-img {
+  width: 40vw;
+  height: 40vw;
+}
+
+@media screen and (min-width: 350px) {
+  .resize-img {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+.h2font-size {
+  font-size: 5vw;
+}
+
+.educ-margin {
+  margin: 0 0 0 20%;
+}
+
+.center-img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.school1,
+.school2,
+.school3 {
+  text-align: center;
+}

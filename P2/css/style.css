@@ -1,0 +1,280 @@
+body,
+div,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding:0;
+  margin:0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.education-entry,
+.work-entry,
+.project-entry {
+  padding: 0 5%;
+}
+
+h1 {
+  font-size: 40px;
+  color: black;
+  line-height: 48px;
+  display: inline;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 2em;
+  color: #00bfa5;
+  line-height: 29px;
+  padding: 3vw 5vw 0;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 20px;
+  color: #000;
+  line-height: 22px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 14px;
+  color: #4a4a4a;
+  line-height: 17px;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  padding:10px 5%;
+}
+
+.date-text {
+  font-style: italic;
+  font-size: 14px;
+  color: gray;
+  line-height: 16px;
+  float: left;
+}
+
+.location-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #00bfa5;
+  line-height: 16px;
+  float: right;
+}
+
+p {
+  font-size: 14px;
+  color: #333;
+  line-height: 21px;
+}
+
+a {
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+
+#skills-h3 {
+  color: white;
+  padding: 2vw 0 0;
+}
+
+.full-name{
+  font-family: 'Dancing Script', cursive;
+  font-size: 50px;
+}
+
+.white-text {
+  font-weight: bold;
+  color: #fff;
+}
+
+.black-text {
+  font-weight: bold;
+  color: black;
+  padding: 0 2vw 0 0;
+}
+
+.gray {
+  background-color: #f3f3f3;
+  padding-bottom: 10px;
+  clear:both;
+}
+
+.light-green {
+  background-color: #e0f2f1;
+}
+.green {
+  background-color: #00bfa5;
+}
+
+#header {
+  background-color: #00bfa5;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2vh;
+}
+
+.flex-menu {
+  display: flex-block;
+  font-size: 15px;
+  text-align: center;
+}
+
+.flex-menu li {
+  padding: 10px;
+  display: inline-block;
+}
+
+.center-content {
+  padding: 2.5% 5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.biopic {
+  float: left;
+  padding: 10px;
+  width: 200px;
+  display: none;
+}
+
+img {
+  padding: 2vw;
+}
+
+span {
+  padding: 5px;
+}
+
+.welcome-message {
+  font-style: italic;
+  font-size: 18px;
+  color: black;
+  line-height: 28px;
+  padding: 0;
+}
+
+#stretch {
+  width:80%;
+}
+
+.proj-title {
+  font-weight: bolder;
+  font-size: 1.3em;
+  margin: 15vm 0;
+  color: inherit;
+}
+
+.onlineCourse {
+  color: #00bfa5;
+  font-size: 20px;
+  padding: 0;
+}
+
+.courses-h3 h3 {
+  padding: 1vw;
+}
+
+.courses-h3 li {
+  padding: 0 3vw;
+}
+
+.inline {
+  display: inline;
+}
+
+#map {
+  display: block;
+  height: 260px;
+  width: 90%;
+  margin: 0 5vw 5vw;
+}
+
+#mapDiv {
+  height: 350px;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+#firstHeading {
+  color: #00bfa5;
+  font-size: 25px;
+}
+
+#lets-connect {
+  text-align: center;
+}
+
+
+
+/* Media queries to handle various device widths */
+
+@media only screen and (max-width: 1024px) {
+  #lets-connect {
+    margin-top: 5%;
+  }
+}
+
+@media only screen and (max-width:900px) {
+  .biopic {
+    width: 175px;
+  }
+
+  .full-name{
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  #lets-connect {
+    margin-top: 5%;
+  }
+  
+  .biopic {
+    width: 150px;
+  }
+
+  .full-name{
+    font-size: 30px;
+  }
+
+  .welcome-message {
+    display: none;
+  }
+
+  .flex-menu li{
+    padding: 5px;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  #skills-h3,
+  .biopic {
+    display: block;
+  }
+}
+
