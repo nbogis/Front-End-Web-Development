@@ -3,42 +3,45 @@
 /**************     Global Section     ************* /
 /** myHero: variable to hold the number of the chosen character 
 *   collisionFlag: true if a collision happen and false if not.
-*   winFlag: true if the player reaches the water and false otherwise.
-*   loseFlag: true if the player used all the attempts. 
-*   score: holds the score that increases when collectables are collected.
+*   app.winFlag: true if the player reaches the water and false otherwise.
+*   app.loseFlag: true if the player used all the attempts. 
+*   money: holds the money that increases when collectables are collected.
 *   attempts: the player starts 3 attempts and it decremented when he is hit by an enemy.
-*   allBugs: array of all enemy sprites.
-*   allHeroes: array of all player sprites. 
-*   diamond: array of sprites of jewels with different colors. */
+*   ALL_BUGS: array of all enemy sprites.
+*   ALL_HEROES: array of all player sprites. 
+*   DIAMOND: array of sprites of jewels with different colors. */
 
-var myHero;
+var app = app || {};
 
-var collisionFlag = false;
+app.myHero = 0;
+app.collisionFlag = false;
 
-var winFlag = false;
-var loseFlag = false;
+app.winFlag = false;
+app.loseFlag = false;
 
-var score = 0;
-var attempts = 3;
+app.money = 0;
+app.attempts = 3;
 
-var allBugs = ['images/enemy-bug1.png',
+app.CANVAS_WIDTH = 505; 
+
+app.ALL_BUGS = ['images/enemy-bug1.png',
         'images/enemy-bug2.png',
         'images/enemy-bug3.png',
         'images/enemy-bug4.png',
         'images/enemy-bug5.png'];
 
-var allHeroes = ['images/char-boy.png',
+app.ALL_HEROES = ['images/char-boy.png',
         'images/char-cat-girl.png',
         'images/char-horn-girl.png',
         'images/char-pink-girl.png',
         'images/char-princess-girl.png'];
 
-var diamond = ['images/Jewel Blue.png',
+app.DIAMOND = ['images/Jewel Blue.png',
         'images/Jewel Green.png',
         'images/Jewel Orange.png'];
 
 /** global function to get a random number within (inclusive) min and (exclusive) max */
-function maxMin(max, min) { 
+app.maxMin = function(max, min) { 
     return Math.random() * (max - min) + min;
 };
 
@@ -62,13 +65,13 @@ var losing = new Audio('Boo.mp3');
 /** audio object when Collectables are collected */
 var coin = new Audio('coin.wav');
 
-/** get the canvas and add text(show you win or you lose), score(show collected score) 
+/** get the canvas and add text(show you win or you lose), money(show collected money) 
 *   and attempts(show number of attempts left) labels to it */
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 $('<span id="text" type="text">').insertAfter('canvas');
-$('<span id="score" type="text">').insertAfter('#text');
-$('<span id="attempt" type="text">').insertAfter('#score');
+$('<span id="money" type="text">').insertAfter('#text');
+$('<span id="attempt" type="text">').insertAfter('#money');
 
 /**************     End - Global Section     ************* /
 
@@ -90,20 +93,20 @@ var Enemy = function(number) {
 /** start method to randomly select a bug, poisition it off the screen to give some 
 *   delay and strat it with a random speed */
 Enemy.prototype.start = function() {
-    val = Math.round(maxMin(5,1));
-    this.sprite = allBugs[val-1];
+    val = Math.round(app.maxMin(5, 1));
+    this.sprite = app.ALL_BUGS[val-1];
     /** -1000 and -800 were chosen since they give some time to the player to move */
-    this.x = Math.round(maxMin(-1000, -800));
+    this.x = Math.round(app.maxMin(-1000, -800));
     /** the bug is positoned depending on its number. 50 and 80 were chosen to place bugs correctly */
-    this.y = 50 + (this.number%3) * 80;
-    this.speed = maxMin(4, 1);
+    this.y = 50 + (this.number % 3) * 80;
+    this.speed = app.maxMin(4, 1);
 };
 /** method to update enemy location, speed, and collision box. It resatrts the bug with random color,
 *   rndom speed, and random location when it reaches the furthest right. 
 *   dt: variable to multiply movement to insure the game runs at the same speed for all computers. */
 Enemy.prototype.update = function(dt) {
     /** restart when reaching the end */
-    if (this.x > 505) {
+    if (this.x > app.CANVAS_WIDTH) {
         this.start();
     }
     /** if not at the furthest right, just keep going straight with the same speed */
@@ -117,34 +120,34 @@ Enemy.prototype.update = function(dt) {
     this.top = this.y - this.vertical;
     this.bottom = this.y;
     /** if the user has won or lost the game, restart it */
-    if (winFlag || loseFlag) this.start();
+    if (app.winFlag || app.loseFlag) this.start();
 };
 /** method that draws the enemy on the screen only when the user is playing the game. It takes
-*   the sprite and the coordinates of the enemy and draw them. It continuesly show the score and the number
+*   the sprite and the coordinates of the enemy and draw them. It continuesly show the money and the number
 *   of attempts left at the bottom of the screen. */
 Enemy.prototype.render = function() {
-    if (select.unselect && !winFlag && !loseFlag)
+    if (select.unselect && !app.winFlag && !app.loseFlag)
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     
     ctx.font = "17px Arial";
     ctx.fillStyle = 'black';
-    ctx.fillText('score: '+ score, 15, 570);
-    document.getElementById('score').style.display = 'visible';
+    ctx.fillText('money: '+ app.money, 15, 570);
+    document.getElementById('money').style.display = 'visible';
 
-    ctx.fillText('attempts: '+ attempts, 410, 570);
-    document.getElementById('score').style.display = 'visible';
+    ctx.fillText('attempts: '+ app.attempts, 410, 570);
+    document.getElementById('money').style.display = 'visible';
 };
 /** method that detects collision of bugs with the player. It detects if 
 *   the collision box of enemy and player intersect. When collided, it sets collision flag,
 *   plays the crash sound, decrement number of attempts. */
 Enemy.prototype.collisionDetection = function() {
     if ((player.bottom >= this.top && player.top <= this.bottom) && (player.front >= this.back && player.back <= this.front)){
-        collisionFlag = true;
+        app.collisionFlag = true;
         crash.play();
-        attempts--;
+        app.attempts--;
 
         /** if attempts is 0, play losing sound */
-        if (attempts < 1) losing.play();
+        if (app.attempts < 1) losing.play();
     }
 };
 
@@ -174,10 +177,10 @@ Player.prototype.start = function() {
 *   winning flag. */
 Player.prototype.update = function() {
     /** if collision happens, reposition the player to the starting point and reset the flag */
-    if (collisionFlag == true) {
+    if (app.collisionFlag == true) {
         this.x = 203;
         this.y = 380;
-        collisionFlag = false;
+        app.collisionFlag = false;
     }
     /** if to the furthest right, stay there */
     if (this.x > 403){
@@ -195,7 +198,7 @@ Player.prototype.update = function() {
     *  the game restarts */
     else if (this.y < 0) {
         this.y = 0;
-        winFlag = true;
+        app.winFlag = true;
         winning.play();
         this.start();
     }
@@ -208,15 +211,15 @@ Player.prototype.update = function() {
 /** method to draw the chosen player on the screen and messages in the right times. If the player 
 *   wins or loses, he goes back to starting point. */
 Player.prototype.render = function() {
-    /** the sprite is the chosen character which number is held ib myHero */
-    this.sprite = allHeroes[myHero-1];
-    /** if the player wins, show congratulation messgge on the water and the final score on rocks.
+    /** the sprite is the chosen character which number is held in myHero */
+    this.sprite = app.ALL_HEROES[app.myHero-1];
+    /** if the player wins, show congratulation messgge on the water and the final money on rocks.
     *   the game freezes and a messag eto hit enter to restart the game is displayed */
-    if (winFlag) {
+    if (app.winFlag) {
         ctx.font = "50px Arial";
         ctx.fillStyle = 'red';
         ctx.fillText('You Win!', 140, 115);
-        ctx.fillText('Your Score is '+score, 70, 270);
+        ctx.fillText('Your money is '+app.money, 70, 270);
 
         ctx.font = "17px Arial";
         ctx.fillStyle = 'white';
@@ -226,8 +229,8 @@ Player.prototype.render = function() {
         this.y = 380;
     }
     /** if the player loses, set the losing flag, display losing message and ask user to restart */
-    if (attempts < 1) {
-        loseFlag = true;
+    if (app.attempts < 1) {
+        app.loseFlag = true;
 
         ctx.font = "50px Arial";
         ctx.fillStyle = 'red';
@@ -261,16 +264,16 @@ Player.prototype.handleInput = function(key) {
     }
     else if (key == 'enter') {
         /** if user hit enter and he won, reset win flag and attemts and start the selector and characters */
-        if (winFlag) {
-            winFlag = false;
-            attempts = 3;
+        if (app.winFlag) {
+            app.winFlag = false;
+            app.attempts = 3;
             select.start();
             characters.start();
         }
         /** if user hit enter and he lost, reset lose flag and attempts and start the selector and characters */
-        if (loseFlag) {
-            loseFlag = false;
-            attempts = 3;
+        if (app.loseFlag) {
+            app.loseFlag = false;
+            app.attempts = 3;
             select.start();
             characters.start();
         }
@@ -286,7 +289,7 @@ var Selector = function(){
     this.sprite = 'images/Selector.png';
     this.start();
 };
-/** start the selector from the middle and reset the score and some variables */
+/** start the selector from the middle and reset the money and some variables */
 Selector.prototype.start = function() {
     /** start the selector from the bottom middle */
     this.x = 203;
@@ -297,7 +300,7 @@ Selector.prototype.start = function() {
     this.choose = 3;
     this.unselect = false;
 
-    score = 0;
+    app.money = 0;
 };
 /** method to draw the selector and ask user to hit enter to finialize his selection */
 Selector.prototype.render = function() {
@@ -315,13 +318,13 @@ Selector.prototype.render = function() {
         ctx.font = "20px Arial";
         ctx.fillStyle = '#0277BD';
         ctx.fillText('Blue', 130, 320);
-        ctx.fillText('1 point ', 120, 350);
+        ctx.fillText('1 coin ', 120, 350);
         ctx.fillStyle = '#43A047';
         ctx.fillText('Green', 225, 320);
-        ctx.fillText('5 points', 215, 350);
+        ctx.fillText('5 coins', 215, 350);
         ctx.fillStyle = '#FF8F00';
         ctx.fillText('Gold', 335, 320);
-        ctx.fillText('10 points', 315, 350);
+        ctx.fillText('10 coins', 315, 350);
 
         ctx.font = "17px Arial";
         ctx.fillStyle = 'white';
@@ -342,7 +345,7 @@ Selector.prototype.handleInput = function(key) {
     /** when enter key is hit, the global variable myHero will be assigned to the chosen 
     *   character's number. The unselect property is set to indicate a character is chosen */
     else if (key == 'enter') {
-        myHero = this.choose;
+        app.myHero = this.choose;
         this.unselect = true;
     }
     /** take care of going beyond the canvas border. Set choose back to the character at the border 
@@ -360,8 +363,8 @@ Selector.prototype.handleInput = function(key) {
 /*********     Characters Section     *********/
 /** Characters class to display a character object at the beginning of the game. */
 var Characters = function(number) {
-    /** sprite is based on the character number in allHeroes array */
-    this.sprite = allHeroes[number-1];
+    /** sprite is based on the character number in ALL_HEROES array */
+    this.sprite = app.ALL_HEROES[number-1];
 
     /** the character will be displayed at x depending its number and y = 380. Each character is 100
     *   unit away from the previous one */
@@ -390,7 +393,7 @@ Characters.prototype.render = function() {
 
 /*********     Collectables Section     ********* /
 /** Collectables class to randomly position and display jewels on the rocks. Jewels 
-*   are collected by the player to increase the score.  */
+*   are collected by the player to increase the money.  */
 var Collectables = function() {
     /** locationsX: x coordinate of the possible locations of the jewel
     *   locationsY: y coordinate of the possible locations of the jewel 
@@ -404,11 +407,11 @@ var Collectables = function() {
 Collectables.prototype.start = function() {
     /** a flag set when the jewel has not been collected and reset when not */
     this.jewelFlag = true;
-    /** randomly choose a jewel color from diamond array and randomly position it */
-    this.val = Math.round(maxMin(2,0));
-    this.sprite = diamond[this.val];
-    this.x = this.locationsX[Math.round(maxMin(4,0))];
-    this.y = this.locationsY[Math.round(maxMin(2,0))];
+    /** randomly choose a jewel color from DIAMOND array and randomly position it */
+    this.val = Math.round(app.maxMin(2, 0));
+    this.sprite = app.DIAMOND[this.val];
+    this.x = this.locationsX[Math.round(app.maxMin(4, 0))];
+    this.y = this.locationsY[Math.round(app.maxMin(2, 0))];
 
     /** set the collision box of the jewel. These numbers were obtained by testing */
     this.front = this.x + 35;
@@ -427,7 +430,7 @@ Collectables.prototype.update = function() {
         this.start();      
     }
     /** restart the jewel if the user won or lost the game */ 
-    if (winFlag || loseFlag) {
+    if (app.winFlag || app.loseFlag) {
         this.start();
     }
 };
@@ -437,17 +440,17 @@ Collectables.prototype.collisionDetection = function() {
     if ((player.bottom >= this.top && player.top <= this.bottom) && (player.front >= this.back && player.back <= this.front)){
        this.jewelFlag = false;
 
-       /** collecting blue jewel increments the score
-       *   green jewel increases the score by 5
-       *   orange jewel increases the score by 10 */
-       if (this.val == 0) score++;
-       else if (this.val == 1) score +=5;
-       else if (this.val == 2) score += 10;
+       /** collecting blue jewel increments the money
+       *   green jewel increases the money by 5
+       *   orange jewel increases the money by 10 */
+       if (this.val == 0) app.money++;
+       else if (this.val == 1) app.money +=5;
+       else if (this.val == 2) app.money += 10;
     }
 };
 /** method to draw the jewel if in the game mode and the user hasn't won or lost yet */
 Collectables.prototype.render = function() {
-    if(select.unselect && !winFlag && !loseFlag){
+    if(select.unselect && !app.winFlag && !app.loseFlag){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 };
@@ -466,7 +469,7 @@ for (var i = 1; i < 6; i++) {
 var select = new Selector();
 
 /** create Collectables object with a random value from 0 to 2 to randomly select the jewel color */
-var jewel = new Collectables(Math.round(maxMin(2,0)));
+var jewel = new Collectables(Math.round(app.maxMin(2, 0)));
 
 /** instantiate enemies with random colors and locatios. Total are 6 enemies moving randomly */
 var allEnemies = [];
