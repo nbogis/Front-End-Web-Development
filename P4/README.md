@@ -1,7 +1,9 @@
 Dear reviewer, 
-I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 93 score in mobile and 94 in desktop. I already exceeded the second project from my previour submission. Follow my instructions below to be able to get the same result. 
+I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 96 score in mobile and desktop. I already exceeded the second project from my previour submission. Please follow my instructions below to be able to get the same result. 
 
 I minified the pizza files. However, the html pages don't look different from the original one as if there is no styling at all. I don't think that is what I suppose to get. Please let me know if there is a way to fix this problem. I appreciate it all your help.     
+
+In both parts, I used Grunt to minify my files. You can see the ones with .min are minified by Grunt. 
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
@@ -68,9 +70,10 @@ and getElementById
 5. Moved variables decleration outside of loops
 
 6. Worked on moving pizzas while scrolling: 
-	a. replaced (i%5) with incrementing number from 0 to 4
-	b. created different layers for each pizza so repainitng occurs in smaller area and not the entire page. Used 3d translation to move the pizza layers
-	c. repalce basicLEft with translation
+  a. Changed the number of generated pizza to a value based on the viewport height
+	b. replaced (i%5) with incrementing number from 0 to 4
+	c. created different layers for each pizza so repainitng occurs in smaller area and not the entire page. Used 3d translation to move the pizza layers
+	d. repalce basicLEft with translation
 
 7. Used grunt to minify css, js, html, and images files  
 
