@@ -1,7 +1,7 @@
 Dear reviewer, 
-    I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 93 score in mobile and 94 in desktop. I already exceeded the second project from my previour submission. Follow my instructions below to be able to get the same result. 
+I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 93 score in mobile and 94 in desktop. I already exceeded the second project from my previour submission. Follow my instructions below to be able to get the same result. 
 
-    I minified the pizza files. However, the html pages don't look different from the original one as if there is no styling at all. I don't think that is what I suppose to get. Please let me know if there is a way to fix this problem. I appreciate it all your help. 
+I minified the pizza files. However, the html pages don't look different from the original one as if there is no styling at all. I don't think that is what I suppose to get. Please let me know if there is a way to fix this problem. I appreciate it all your help.     
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
