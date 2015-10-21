@@ -103,7 +103,8 @@ To test the project:
 
 1. Create a local host by opening your terminal and cd to the directory of the html file. 
 
-2. ```bash
+2. type: 
+```bash
 $> python -m SimpleHTTPServer
 ```
 
