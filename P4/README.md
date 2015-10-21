@@ -49,7 +49,7 @@ To run this project,
 
 1. Download the project from my GitHub (https://github.com/nbogis/Front-End-Web-Development.git) and Open pizza min inside Cam profile min folder. 
 
-2. You see Gruntfile, package.json, and node-modules. These files are important to run grunt to do optimization to the files. The steps I took to download grunt is : 
+2. You see Gruntfile and package.json. These files are important to run grunt to do optimization to the files. The steps I took to download grunt is : 
   a. open terminal and head to your directory where the pizza files are. In my case they are in Cam profile min/pizza min
   b. type: $> sudo npm install -g grunt-cli or sudo npm install grunt --save-dev
   You might be asked to input some information to include in the package.json file. These infroamtion are like author name, version and name of your projects, etc. 
@@ -61,7 +61,7 @@ To run this project,
     $> sudo npm grunt-inline-css --save-dev
     $> sudo npm grunt-contrib-htmlmin --save-dev
     ```
-  Now your package.json will have all the module names with their version and another folder called node-modules will be generate and it includes all the modules. You can skip htmlmin and inline-html since these optimizations seem to igrnore styling and the page will look very different. 
+  Now your package.json will have all the module names with their version and another folder called node-modules will be generate and it includes all the modules. The node-modules folder is not pushed to my gitHub since it has so many files and it generate error when submitting. You can skip htmlmin and inline-html since these optimizations seem to igrnore styling and the page will look very different. 
   d. open Gruntfile.js and copy my code to it.
 
 3. Run Grunt by typing: 
