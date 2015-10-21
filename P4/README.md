@@ -1,9 +1,3 @@
-Dear reviewer, 
-I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 96 score in mobile and desktop. I already exceeded the second project from my previour submission. Please follow my instructions below to be able to get the same result. 
-
-I minified the pizza files. However, the html pages don't look different from the original one as if there is no styling at all. I don't think that is what I suppose to get. Please let me know if there is a way to fix this problem. I appreciate it all your help.     
-
-In both parts, I used Grunt to minify my files. You can see the ones with .min are minified by Grunt. 
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
@@ -51,10 +45,34 @@ go to your working directory and type [python -m SimpleHTTPServer], then open a 
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To run this project, 
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+1. Download the project from my GitHub (https://github.com/nbogis/Front-End-Web-Development.git) and Open pizza min inside Cam profile min folder. 
 
+2. You see Gruntfile, package.json, and node-modules. These files are important to run grunt to do optimization to the files. The steps I took to download grunt is : 
+  a. open terminal and head to your directory where the pizza files are. In my case they are in Cam profile min/pizza min
+  b. type: $> sudo npm install -g grunt-cli or sudo npm install grunt --save-dev
+  You might be asked to input some information to include in the package.json file. These infroamtion are like author name, version and name of your projects, etc. 
+  c. now you need to download the modules that you are going to use to minify your files. In my case I used, uglify, imagemin, cssmin, inline-css, and htmlmin. So you need to type: 
+
+    $> sudo npm grunt-contrib-uglify --save-dev
+    $> sudo npm grunt-contrib-imagemin --save-dev
+    $> sudo npm grunt-contrib-cssmin --save-dev
+    $> sudo npm grunt-inline-css --save-dev
+    $> sudo npm grunt-contrib-htmlmin --save-dev
+
+  Now your package.json will have all the module names with their version and another folder called node-modules will be generate and it includes all the modules. You can skip htmlmin and inline-html since these optimizations seem to igrnore styling and the page will look very different. 
+  d. open Gruntfile.js and copy my code to it.
+
+3. Run Grunt by typing: 
+  $> grunt
+
+  if you want to run a specific module just type grunt module-name
+  $> grunt cssmin
+
+4. Now your files are optimized and you can open the page. You can see that pizza.html is using all the minified files (style.min and main.min.js) so it will speedup the loading of the page. 
+
+5. Now you can analyze the page and you will see that we acheive our goal. 
 
 Steps to finish Part 1: 
 
@@ -80,8 +98,14 @@ and getElementById
 To test the project: 
 
 1. Create a local host by opening your terminal and cd to the directory of the html file. 
-2. 
 
+2. $> python -m SimpleHTTPServer
+
+3. Go to your browser and type 0.0.0.0:8000/pizza.html 
+
+4. Open devTool and head to console to watch the time it takes to scroll and resize 
+
+5. You can also see that I acheavied 60 FPS by looking at the Timeline
 
 ==================================================================== 
 
