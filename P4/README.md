@@ -1,39 +1,51 @@
+Dear reviewer, 
+    I am aiming for this project to exceed so please return it back to me when it fails the exceeding specification. However, in the first part I got 93 score in mobile and 94 in desktop. I already exceeded the second project from my previour submission. Follow my instructions below to be able to get the same result. 
 
+    I minified the pizza files. However, the html pages don't look different from the original one as if there is no styling at all. I don't think that is what I suppose to get. Please let me know if there is a way to fix this problem. I appreciate it all your help. 
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
+Steps to finish Part 1: 
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+1. Resized the images and add srcset to the html file. 
+
+2. Made analytics js file async 
+
+3. Added media query to print.css
+
+4. Removed spaces from script in the html file
+
+5. Removed fonts. It takes so long to download fonts
+
+6. Used grunt to minify css, js, html, and images
+
+After getting all your files ready, you need to test your files. To do so: 
+
+1. You need to create a server-side site. To do so: 
+go to your working directory and type [python -m SimpleHTTPServer], then open a web page and type [0.0.0.0:8000/your-html-file].
 
   ```bash
   $> cd /path/to/your-project-folder
   $> python -m SimpleHTTPServer 8080
   ```
-
-1. Open a browser and visit localhost:8080
+  in your browser type 0.0.0.0:8080/index.min.html
 
 
 1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+
 2. In a separate terminal, run ngrok
 
   ``` bash
   $> cd /path/to/your-project-folder
   $> ./ngrok http 8080
   ```
+* You need to make sure that you are using the same port as the one you used in step 1 
 
-3. Copy the public URL ngrok gives you (Forwarding url) 
-4. Open PageSpeed Insight url and paste your url for analyzing. 
+3. Copy the public URL ngrok gives you (Forwarding url [example. http://ba64698c.ngrok.io]) 
 
-Steps to finish Part 1: 
+4. Open PageSpeed Insight url and paste your url for analyzing and add the html file [example: http://5b7ccaa1.ngrok.io/index.min.html]
 
-1. Resized the images and add srcset to the html file. 
-2. Made analytics js file async 
-3. Added media query to print.css
-4. Removed spaces from script in the html file
-5. Removed fonts. It takes so long to download fonts
-6. Used grunt to minify css, js, html, and images
+* You need to make sure that you opne the minified html to get a better score. 
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
@@ -41,20 +53,36 @@ To optimize views/pizza.html, you will need to modify views/js/main.js until you
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
-For the worker to run correctly, you need to create a server-side site. To do so: 
-go to your working directory and type [python -m SimpleHTTPServer], then open a web page and type [0.0.0.0:8000/your-html-file].
 
 Steps to finish Part 1: 
 
-1. Followed Cam's instructions to speedup resizing the pizzas
-2. Resized the images and added srcset to them
-3. Changed from querySelectorAll and query Selector to getElementsByClass Name and getElementById
-4. Moved variables decleration outside of loops
-5. Worked on moving pizzas while scrolling: 
+1. Read through and understand main.js
+
+2. Followed Cam's instructions to speedup resizing the pizzas
+
+3. Resized the images and added srcset to them
+
+4. Changed from querySelectorAll and query Selector to getElementsByClass Name 
+and getElementById
+
+5. Moved variables decleration outside of loops
+
+6. Worked on moving pizzas while scrolling: 
 	a. replaced (i%5) with incrementing number from 0 to 4
 	b. created different layers for each pizza so repainitng occurs in smaller area and not the entire page. Used 3d translation to move the pizza layers
 	c. repalce basicLEft with translation
-6. Used grunt to minify css, js, html, and images files  
+
+7. Used grunt to minify css, js, html, and images files  
+
+To test the project: 
+
+1. Create a local host by opening your terminal and cd to the directory of the html file. 
+2. 
+
+
+==================================================================== 
+
+I don't remember where I found these notes but they are useful: 
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
