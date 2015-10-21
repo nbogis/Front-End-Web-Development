@@ -54,22 +54,24 @@ To run this project,
   b. type: $> sudo npm install -g grunt-cli or sudo npm install grunt --save-dev
   You might be asked to input some information to include in the package.json file. These infroamtion are like author name, version and name of your projects, etc. 
   c. now you need to download the modules that you are going to use to minify your files. In my case I used, uglify, imagemin, cssmin, inline-css, and htmlmin. So you need to type: 
-
+    ```bash
     $> sudo npm grunt-contrib-uglify --save-dev
     $> sudo npm grunt-contrib-imagemin --save-dev
     $> sudo npm grunt-contrib-cssmin --save-dev
     $> sudo npm grunt-inline-css --save-dev
     $> sudo npm grunt-contrib-htmlmin --save-dev
-
+    ```
   Now your package.json will have all the module names with their version and another folder called node-modules will be generate and it includes all the modules. You can skip htmlmin and inline-html since these optimizations seem to igrnore styling and the page will look very different. 
   d. open Gruntfile.js and copy my code to it.
 
 3. Run Grunt by typing: 
+  ```bash
   $> grunt
-
+  ```bash
   if you want to run a specific module just type grunt module-name
+  ```bash
   $> grunt cssmin
-
+  ```bash
 4. Now your files are optimized and you can open the page. You can see that pizza.html is using all the minified files (style.min and main.min.js) so it will speedup the loading of the page. 
 
 5. Now you can analyze the page and you will see that we acheive our goal. 
@@ -99,7 +101,9 @@ To test the project:
 
 1. Create a local host by opening your terminal and cd to the directory of the html file. 
 
-2. $> python -m SimpleHTTPServer
+2. ```bash
+$> python -m SimpleHTTPServer
+```bash
 
 3. Go to your browser and type 0.0.0.0:8000/pizza.html 
 
