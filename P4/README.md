@@ -67,11 +67,13 @@ To run this project,
 3. Run Grunt by typing: 
   ```bash
   $> grunt
-  ```bash
+  ```
+
   if you want to run a specific module just type grunt module-name
+
   ```bash
   $> grunt cssmin
-  ```bash
+  ```
 4. Now your files are optimized and you can open the page. You can see that pizza.html is using all the minified files (style.min and main.min.js) so it will speedup the loading of the page. 
 
 5. Now you can analyze the page and you will see that we acheive our goal. 
@@ -103,7 +105,7 @@ To test the project:
 
 2. ```bash
 $> python -m SimpleHTTPServer
-```bash
+```
 
 3. Go to your browser and type 0.0.0.0:8000/pizza.html 
 
