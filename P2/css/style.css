@@ -129,6 +129,11 @@ a {
 .light-green {
   background-color: #e0f2f1;
 }
+
+#workExperience {
+  padding-bottom: 20px;
+}
+
 .green {
   background-color: #00bfa5;
 }
@@ -241,13 +246,13 @@ span {
 
 @media only screen and (max-width: 1024px) {
   #lets-connect {
-    margin-top: 5%;
+    /*margin-top: 5%;*/
   }
 }
 
 @media only screen and (max-width: 750px) {
   #lets-connect {
-    margin-top: 5%;
+    /*margin-top: 5%;*/
   }
 
   #role {
