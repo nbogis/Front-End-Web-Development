@@ -11,22 +11,21 @@ var bio = {
         'website' : 'http://nidaabugis.weebly.com',
         'location': 'Huntington Beach, CA'},
     'welcomeMessage' : 'Dynamic Computer engineering graduate with portfolio of success delivering on schedule, dependable, and high precession results. Adept at analyzing and organizing challenges collaboratively and independently with creative problem solving, and strong aptitude to learn new technologies. Self-motivated and highly ambitious to growing as a professional through academic understanding and practical applications.',
-    'skills': ['C/C++/C#', 'MatLab', 'Python', 'AVR and MIPS Assembly', 'VHDL', 'Chapel', 'MPI',
-    'UPC', 'HTML', 'CSS', 'JavaScript', 'DAC/ADC', 'Git', 'UART', 'RS232', 'GPIO', 'TCP/IP'],
-    'biopic': ['images/profile.jpg','images/profile_1x.jpg','images/profile_2x.jpg','my profile picture'],
+    'skills': ['HTML5', 'CSS3', 'JavaScript','Git', 'GitHub', 'jQuery', 'Bootstrap', ' knockout', 'Grunt'],
+    'biopic': ['images_src/profile_2x.jpg','images/profile_1x.jpg','images_src/profile_2x.jpg','my profile picture'],
 };
 
 /** bio display function using encapsulation*/
 bio.display = function() {
-    /** add button to internationalize name */
-    $('#header').prepend(internationalizeButton); /** display an internationalize button */
-
     /** add name and role to the header */ 
     var formattedRole = HTMLheaderRole.replace('%data%',bio.role);
     $('#header').prepend(formattedRole);
 
     var formattedName = HTMLheaderName.replace('%data%', bio.name);
     $('#header').prepend(formattedName);
+
+    /** add button to internationalize name */
+    $('#header span:first').append(internationalizeButton); /** display an internationalize button */
 
     /** add contacts info to topContacts */
     if (bio.contacts.mobile.length) {
@@ -46,12 +45,8 @@ bio.display = function() {
 
     if (bio.contacts.gitHub.length) { 
         var formattedGit = HTMLgithub.replace('%data%', bio.contacts.gitHub);
+        formattedGit = formattedGit.replace('#',bio.contacts.gitHub);
         $('#topContacts').append(formattedGit);
-    }
-
-    if (bio.contacts.website.length) {
-        var formattedWeb = HTMLwebsite.replace('%data%', bio.contacts.website);
-        $('#topContacts').append(formattedWeb);
     }
 
     if (bio.contacts.location !== '') {
@@ -102,12 +97,8 @@ bio.display = function() {
 
     if (bio.contacts.gitHub.length) { 
         var formattedGit = HTMLgithub.replace('%data%', bio.contacts.gitHub);
+        formattedGit = formattedGit.replace('#',bio.contacts.gitHub);
         $('#footerContacts').append(formattedGit);
-    }
-
-    if (bio.contacts.website.length) {
-        var formattedWeb = HTMLwebsite.replace('%data%', bio.contacts.website);
-        $('#footerContacts').append(formattedWeb);
     }
 };
 
@@ -117,14 +108,20 @@ bio.displaymenu = function() {
     $('#main').addClass('container');
 
     $('<ul id="mymenu" class="flex-menu list-inline"></ul>').insertBefore('#header');
-    /** add work menu to scroll to work experience */ 
-    var tmp = menu.replace('%data%','work');
-    tmp = tmp.replace('%data%','workExperience');
-    $('#mymenu').append(tmp);
 
     /** add education menu to scroll to Education */
     tmp = menu.replace('%data%','edu');
     tmp = tmp.replace('%data%','Education');
+    $('#mymenu').append(tmp);
+
+    /** add projects menu to scroll to work experience */ 
+    var tmp = menu.replace('%data%','pro');
+    tmp = tmp.replace('%data%','Projects');
+    $('#mymenu').append(tmp);
+
+    /** add work menu to scroll to work experience */ 
+    var tmp = menu.replace('%data%','work');
+    tmp = tmp.replace('%data%','workExperience');
     $('#mymenu').append(tmp);
 
     /** add map menu to scroll to where I've lived and worked */ 
@@ -155,18 +152,7 @@ var education = {
             'major' : 'Computer Engineering',
             'minor' : 'Computer Architecture and High-Performance Computing',
             'dates' : 2014,
-            'url' : 'http://www.gwu.edu/',
-            'course' : ['Computer Organization',
-                'Microcomputer Systems Architecture',
-                'Parallel Computer Architecture',
-                'Grid and Cloud Computing (Objective-C)',
-                'High-PerformanceProcessors',
-                'IntroductiontoComputerNetwork',
-                'Device Electronics (elective)',
-                'Computer Vision (elective, MatLab)',
-                'Introduction to High-Performance Computing',
-                'EmbeddedSystems'
-            ]
+            'url' : 'http://www.gwu.edu/'
         },
         {
             'name' : 'Saint Louis University',
@@ -175,40 +161,49 @@ var education = {
             'major' : 'Computer Engineering',
             'minor' : 'Computer Science and Engineering Mathematics',
             'dates' : 2012,
-            'url' : 'http://slu.edu' ,
-            'course' : ['Senior Design',
-                'Microprocessor (AVR)',
-                'Hardware / Software Co-Design (C, VHDL)',
-                'Computer Architecture',
-                'Computer Networking',
-                'Data Structure (C++)',
-                'Object Oriented Programming (Python)',
-                'Operating Systems (C / C++)',
-                'Linear Algebra',
-                'Advanced Mathematics',
-                'Probability and Statistics'
-            ]
+            'url' : 'http://slu.edu'
         }
     ],
 
     'OnlineCourses' : [
         {
+            'title' : 'Front-End Web Development Nanodegree',
+            'school' : 'Udacity',
+            'date' : 'Sep 2015',
+            'url' : 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
+            'projects' : [
+            'Build a Portfolio Site',
+            'Interactive Resume',
+            'Classic Arcade Game Clone',
+            'Website Optimization',
+            'Neighborhood Map',
+            'Feed Reader Testing'
+            ]
+
+        },
+        {
             'title' : 'Embedded Systems - Shape the World',
-            'school' : 'EdX - The University of Texas at Austin',
-            'date' : 2015,
-            'url' : 'https://www.edx.org/course/embedded-systems-shape-world-utaustinx-ut-6-02x'
+            'school' : 'EdX',
+            'date' : 'May 2015',
+            'url' : 'https://www.edx.org/course/embedded-systems-shape-world-utaustinx-ut-6-02x',
+            'projects' : [
+            'Finite State Machines',
+            'Interrupts',
+            'DAC and Sound',
+            'ADC Data Acquisition',
+            'Systems Approach to Game Design'
+            ]
         },
         {
             'title' : 'How to Use Git and GitHub',
             'school' : 'Udacity',
-            'date' : 2015,
-            'url' : 'https://www.udacity.com/course/how-to-use-git-and-github--ud775'
-        },
-        {
-            'title' : 'Front-End Web Development Nanodegree',
-            'school' : 'Udacity',
-            'date' : 2015,
-            'url' : 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
+            'date' : 'Aug 2015',
+            'url' : 'https://www.udacity.com/course/how-to-use-git-and-github--ud775',
+            'projects' : [
+            'Navigating a Commit History',
+            'Creating and Modifying a Repository',
+            'Using GitHub to Collaborate'
+            ]
         }
     ]
 };
@@ -225,10 +220,8 @@ education.display = function() {
             $('.education-entry:last').append(formattedName);
 
             formattedDeg = HTMLschoolDegree.replace('%data%', education.schools[i].degree);
+            formattedDeg = formattedDeg.replace('%data1%',education.schools[i].dates)
             $('.education-entry:last').append(formattedDeg);
-
-            formattedDates = HTMLschoolDates.replace('%data%', education.schools[i].dates);
-            $('.education-entry:last').append(formattedDates);
 
             formattedLoc = HTMLschoolLocation.replace('%data%', education.schools[i].location);
             $('.education-entry:last').append(formattedLoc);
@@ -239,31 +232,32 @@ education.display = function() {
             formattedMin = HTMLschoolMinor.replace('%data%', education.schools[i].minor);
             $('.education-entry:last').append(formattedMin);
 
-            /** Displaying courses */
-            $('.education-entry:last').append(HTMLschoolCrsStart);
-            for (var j=0; j < education.schools[i].course.length; j++){
-                formattedCrs = HTMLschoolCourse.replace('%data%', education.schools[i].course[j]);
-                $('.courses-h3:last').append(formattedCrs);
-            }
         }
     }
     /** display online courses */
     if (education.OnlineCourses.length > 0){
-        $('.education-entry:last').append(HTMLonlineClasses);
+        $('#education').append(HTMLschoolStart);
+
         var formattedTitle,formattedDates,formattedUrl;
         for (var i=0; i<education.OnlineCourses.length; i++){
-            formattedTitle = HTMLonlineTitle.replace('%data%', education.OnlineCourses[i].title);
+
+
+            formattedTitle = HTMLonlineTitle.replace('%data1%', education.OnlineCourses[i].school);
+            formattedTitle = formattedTitle.replace('%data%',education.OnlineCourses[i].title)
+            formattedTitle = formattedTitle.replace('#', education.OnlineCourses[i].url);
             $('.education-entry:last').append(formattedTitle);
 
-            formattedName = HTMLonlineSchool.replace('%data%', education.OnlineCourses[i].school);
-            $('.education-entry:last').append(formattedName);
+            $('.education-entry:last').append(HTMLonline);
 
-            formattedDates = HTMLonlineDates.replace('%data%', education.OnlineCourses[i].date);
-            $('.education-entry:last').append(formattedDates);
-
-            formattedUrl = HTMLonlineURL.replace('%data%', education.OnlineCourses[i].url);
-            formattedUrl = formattedUrl.replace('#',education.OnlineCourses[i].url)
-            $('.education-entry:last').append(formattedUrl);
+            // formattedName = HTMLonlineSchool.replace('%data%', education.OnlineCourses[i].school);
+            formattedDate = HTMLonlineDate.replace('%data%',education.OnlineCourses[i].date)
+            $('.education-entry:last').append(formattedDate);
+            $('.education-entry:last').append(HTMLOnlineprojStart);
+            var formattedProj;
+            for (var j=0; j < education.OnlineCourses[i].projects.length; j++){
+                formattedProj = HTMLonlineprojects.replace('%data%', '- ' + education.OnlineCourses[i].projects[j]);
+               $('.projs:last').append(formattedProj);
+            }
         }
     }
 };
@@ -271,6 +265,18 @@ education.display = function() {
 /** work object */ 
 var work = {
     'jobs' : [
+        {
+            'employer' : 'Edwards Lifesciences',
+            'title' : 'Junior Software Engineer at Automated Software Testing for Hemodynamic Monitoring Unit',
+            'location' : 'Irvine, CA',
+            'dates' : 'Nov 2015 - current',
+            'description' : [ 'Write automated python and C# scripts',
+                'Execute automated scripts in Robot framework for hardware and software units',
+                'Debug and log software defects',
+                'Validate and Document test protocols'
+            ],
+            'url' : 'http://www.edwards.com/'
+        },
         {
             'employer' : 'The George Washington University',
             'title' : 'Autonomous Robotics and Perception volunteer',
@@ -289,24 +295,13 @@ var work = {
             'title' : 'Event Management Systems intern',
             'location' : 'Washington, DC',
             'dates' : 'Jul 2011 - Aug 2011',
-            'description' : ['Experience with ArcSight, the security management systems which includes:',
+            'description' : ['Experienced with ArcSight, a security management systems which includes:',
                 'Optimized rules to manage database events, which resulted in a 100% improve in performance',
                 'Investigated database threats and reported events',
                 'Created dashboards to classify events based on their priority',
                 'Developed active lists, queries and reports'
             ],
             'url' : 'http://www.worldbank.org/'
-        },
-        {
-            'employer' : 'Saint Louis University',
-            'title' : 'Admission Assistant',
-            'location' :  'Madird, Spain',
-            'dates' : 'Aug 2009 - Novermber 2009',
-            'description' : ['Prepared the university flyers and advertisements',
-                'Answered phone calls and directing callers to the appropriate department',
-                'Arranged orders and deliveries of the University'
-            ],
-            'url' : 'http://spain.slu.edu/' 
         }
     ]
 };
@@ -314,25 +309,28 @@ var work = {
 /** work display function using encapsulation */
 work.display = function() {
     if(work.jobs.length > 0){
-        $('#workExperience').append(HTMLworkStart);
-    }
-    for (var i=0; i < work.jobs.length; i++){
-        formattedEmpl = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
-        formattedEmpl = formattedEmpl .replace('#', work.jobs[i].url);
-        formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[i].title);
-        string = formattedEmpl + formattedTitle; 
-        /** append to work-entry */
-        $('.work-entry:last').append(string);
+        for (var i=0; i < work.jobs.length; i++){
+            $('#workExperience').append(HTMLworkStart);
 
-        formattedLoc = HTMLworkLocation.replace('%data%', work.jobs[i].location);
-        $('.work-entry:last').append(formattedLoc);
+            formattedEmpl = HTMLworkEmployer.replace('%data%', work.jobs[i].employer);
+            formattedEmpl = formattedEmpl .replace('#', work.jobs[i].url);
+            formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[i].title);
+            string = formattedEmpl + formattedTitle; 
+            /** append to work-entry */
+            $('.work-entry:last').append(string);
 
-        formattedDate = HTMLworkDates.replace('%data%', work.jobs[i].dates);
-        $('.work-entry:last').append(formattedDate);
+            formattedLoc = HTMLworkLocation.replace('%data%', work.jobs[i].location);
+            $('.work-entry:last').append(formattedLoc);
 
-        for (var j=0; j < work.jobs[i].description.length; j++){
-            formattedDes = HTMLworkDescription.replace('%data%', work.jobs[i].description[j]);
-            $('.work-entry:last').append(formattedDes);
+            formattedDate = HTMLworkDates.replace('%data%', work.jobs[i].dates);
+            $('.work-entry:last').append(formattedDate);
+
+            $('.work-entry:last').append(HTMLworkDescStart);
+            for (var j=0; j < work.jobs[i].description.length; j++){
+                formattedDes = HTMLworkDescription.replace('%data%', '- '+work.jobs[i].description[j]);
+                // $('#desc').append(formattedDes);
+                $('.desc-Start:last').append(formattedDes);
+            }
         }
     }
 };
@@ -341,22 +339,46 @@ work.display = function() {
 var projects = {
     'projects' : [
         {
+            'school' : 'Udacity',
+            'title' : 'Neighborhood Map',
+            'course' : 'Front-End Web Development Nanodegree',
+            'url' : 'https://github.com/nbogis/Project-5/tree/master/neighbor_map',
+            'dates' : 'Sep 2015',
+            'description' : 'An app shows a map with points of interest (POI) around a location which can be filtered.' +
+            'POI\'s marker and their name in the list can be clicked to show more information. Ajax data were requested from Wikipedia to show these information.'+
+            'Knowckout framework was used for binding POI on the map with filtered data. The MVVM view model was also implemented.',
+            'images' : ['images_src/neighbor_2x.jpg','images/neighbor_1x.jpg','images_src/neighbor_2x.jpg','my frogger online game']
+            },
+            {
+            'school' : 'Udacity',
+            'title' : 'Website Optimization',
+            'course' : 'Front-End Web Development Nanodegree',
+            'url' : 'https://github.com/nbogis/Front-End-Web-Development/tree/master/P4/Cam%20profile%20min/pizza%20min',
+            'dates' : 'Sep 2015',
+            'description' : 'Heavy loaded website was optimized to achieve 90fps. Images were resized to different sizes and srcset was used '+
+            'to load the appropriate image. CSS, html and javscript were also minified using Grunt. Extra layers and fonts were removed to minimize the traffic.',
+            'images' : ['images_src/pizza_2x.jpg','images/pizza_1x.jpg','images_src/pizza_2x.jpg','my frogger online game']
+            },
+            {
+            'school' : 'Udacity',
+            'title' : 'Classic Arcade Game Clone',
+            'course' : 'Front-End Web Development Nanodegree',
+            'url' : 'https://github.com/nbogis/Front-End-Web-Development/tree/master/P3',
+            'dates' : 'Aug 2015',
+            'description' : 'Frogger online video game was written in HTML, Javascript, and CSS. Game functionalities include ' +
+            'controlling using keyboard keys, character selection, collision with enemeis' +
+            'collecting jewels, displaying score, music and sound effects, displaying texts. All of the game functionalities were implemented in Javascript. ',
+            'images' : ['images_src/frogger_2x.jpg','images/frogger_1x.jpg','images_src/frogger_2x.jpg','my frogger online game']
+            },
+            
+            {
             'school' : 'Edx - The University of Texas at Austin',
             'title' : 'Space Invaders',
             'course' : 'Embedded Systems',
             'url' : 'https://www.edx.org/course/embedded-systems-shape-world-utaustinx-ut-6-03x',
-            'dates' : 'Mar 2015 - Mar 2015',
+            'dates' : 'Mar 2015',
             'description' : 'Built Space Invaders hand-held game using Tiva TM4C123 microcontroller. The game engine is based on random appearance of enemies and their attacks. It con- sists of Interrupt Service Routines (ISR) and timers to read keys input and to play sound effects. Digital to Analog Converter (DAC) and Analog to Digital Converter (ADC) were implemented to output the sound and to control the player with a potentiometer. The characters were drawn in paint program and were converted to arrays. The sounds were also converted from .wav to arrays of values to output to the DAC.',
-            'images' : ['images_src/IMG_2755_1024.jpg','images/IMG_2755_1024_1x.jpg','images/IMG_2755_1024_2x.jpg','my space invader game']
-            },
-            {
-            'school' : 'The George Washington University' ,
-            'title' : 'Quran Prayers',
-            'course' : 'Embedded Systems',
-            'url' : 'http://www.gwu.edu/',
-            'dates' : 'Aug 2014 - Jul 2014',
-            'description' : 'Developed a device that shows verses of the Qura’an for Muslims to read during their prayers. The device mainly consist of a tablet and Arduino microcontroller, which communicate via Bluetooth. The device senses the worshipper’s poses and configures the display accordingly. The project was programmed in C and Java.',
-            'images' : ['images_src//IMG_1977_1024.jpg','images//IMG_1977_1024_1x.jpg','images//IMG_1977_1024_2x.jpg','my device on a praying carpet']
+            'images' : ['images_src/IMG_2755_1024_2x.jpg','images/IMG_2755_1024_1x.jpg','images_src/IMG_2755_1024_2x.jpg','my space invader game']
             },
             {
             'school' : 'The George Washington University', 
@@ -366,34 +388,7 @@ var projects = {
             'dates' : 'Nov 2014 - Dec 2014',
             'description' : 'Programmed matrix multiplication and sobel edge detection benchmarks in Chapel parallel programming language. These codes were developed to test the performance of the George, which is a supercomputer at the George Washington University, and the programming language.',
             'images' : ''
-            },
-            {
-            'school' : 'Saint Louis University' ,
-            'title' : 'RAD Dosimeter',
-            'course' : 'Senior Design' ,
-            'url' : 'http://www.slu.edu/',
-            'dates' : 'Aug 2011 - May 2011' ,
-            'description' : 'Engineered a dosimeter to measure active and cumulative radiation doses from conceptual design to completion. Maple microcontroller with ARM architecture was selected then programmed in C. LCD was designed to display radiation doses and implemented an alarm to notify user when the doses exceeded a set threshold. The device’s different components were selected based on cost, weight, size, and power consumption constraints. The design was presented in front of professors and engineers resulting in being selected for display at the Saint Louis University Senior Design Symposium.',
-            'images' : ['images_src/Untitled.jpg','images/Untitled_1x.jpg','images/Untitled_2x.jpg','RAD device\'s components']
-            },
-            {
-            'school' : 'Saint Louis University',
-            'title' : 'Image Processing',
-            'course' : 'Image Processing',
-            'url' : 'http://www.slu.edu/',
-            'dates' : 'Jan 2012 - Aug 2012',
-            'description' : 'Created 3D models of a walking man using the transformation matrices. Implemented a program to calculate the calibration matrix of a stereoscopic camera and process the captured images. These projects were completed using MatLab.',
-            'images' : ['images_src/Untitled1.jpg','images/Untitled1_1x.jpg','images/Untitled1_2x.jpg','modeling of a walking man on MatLab']
-            },
-            {
-            'school' : 'Saint Louis University',
-            'title' : 'Automated Robot',
-            'course' : 'Junior Design' ,
-            'url' : 'http://www.slu.edu/',
-            'dates' : 'Jan 2011 - Aug 2011',
-            'description' : 'Developed algorithms to navigate a robot through a course autonomously. The algorithms were designed in both MatLab and C.',
-            'images' : ''
-        }
+            }
     ]
 };
 
@@ -404,10 +399,10 @@ projects.display = function() {
             $('#projects').append(HTMLprojectStart);
 
             var formattedTitle = HTMLprojectTitle.replace('%data%', projects.projects[i].title);
+            formattedTitle = formattedTitle.replace('#',projects.projects[i].url)
             $('.project-entry:last').append(formattedTitle);
 
             formattedScl = HTMLprojectScl.replace('%data%', projects.projects[i].school);
-            formattedScl = formattedScl.replace('#',projects.projects[i].url)
             $('.project-entry:last').append(formattedScl);
 
             formattedCrs = HTMLprocjectCourse.replace('%data%', projects.projects[i].course);

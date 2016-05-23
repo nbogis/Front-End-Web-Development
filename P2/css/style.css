@@ -18,25 +18,22 @@ h6 {
   overflow: auto;
 }
 
+#education {
+  padding-bottom: 2%;
+}
+
 .education-entry,
 .work-entry,
 .project-entry {
-  padding: 0 5%;
+  padding: 1% 5% 0 5%;
 }
 
 h1 {
-  font-size: 40px;
-  color: black;
-  line-height: 48px;
-  display: inline;
-}
-
-h2 {
   font-weight: bold;
-  font-size: 2em;
+  font-size: 25px;
   color: #00bfa5;
   line-height: 29px;
-  padding: 3vw 5vw 0;
+  padding: 2vw 4vw 0;
 }
 
 h3 {
@@ -69,11 +66,18 @@ h5 {
 }
 
 .location-text {
-  font-style: italic;
+  font-style: bold;
   font-size: 14px;
   color: #00bfa5;
   line-height: 16px;
   float: right;
+}
+
+button {
+  float: right;
+  margin-top: 2%;
+  background-color: #BDBDBD;
+  color: black;
 }
 
 p {
@@ -81,6 +85,10 @@ p {
   color: #333;
   line-height: 21px;
 }
+
+p1 {
+    display: -webkit-inline-box;
+  }
 
 a {
   text-decoration: none;
@@ -96,6 +104,9 @@ a {
 .full-name{
   font-family: 'Dancing Script', cursive;
   font-size: 50px;
+  color: black;
+  line-height: 48px;
+  display: inline;
 }
 
 .white-text {
@@ -119,10 +130,6 @@ a {
   background-color: #e0f2f1;
 }
 .green {
-  background-color: #00bfa5;
-}
-
-#header {
   background-color: #00bfa5;
 }
 
@@ -152,13 +159,13 @@ a {
 
 ul {
   list-style-type: none;
+  padding-top: 2%
 }
 
 .biopic {
   float: left;
   padding: 10px;
   width: 200px;
-  display: none;
 }
 
 img {
@@ -171,7 +178,7 @@ span {
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
+  font-size: 16px;
   color: black;
   line-height: 28px;
   padding: 0;
@@ -179,6 +186,7 @@ span {
 
 #stretch {
   width:80%;
+  padding-top: 2%
 }
 
 .proj-title {
@@ -229,7 +237,6 @@ span {
 }
 
 
-
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
@@ -238,23 +245,52 @@ span {
   }
 }
 
-@media only screen and (max-width:900px) {
-  .biopic {
-    width: 175px;
-  }
-
-  .full-name{
-    font-size: 40px;
-  }
-}
-
 @media only screen and (max-width: 750px) {
   #lets-connect {
     margin-top: 5%;
   }
-  
+
+  #role {
+    display: block;
+  }
+
+  button {
+    display: block;
+    float: left;
+  }
+
+  span {
+    padding: 0;
+  }
+
+  hr {
+    margin-top: 15%;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .flex-box {
+    justify-content: flex-start;
+    padding: 0 2%;
+  }
+
+  #skills-h3 {
+    padding: 0 2%;
+  }
+
+  .location-text {
+    float: none;
+  }
+
+  .date-text {
+    padding-right: 2%;
+  }
+
   .biopic {
-    width: 150px;
+    float: none;
+    margin-left: 10rem;
   }
 
   .full-name{
@@ -271,10 +307,29 @@ span {
   }
 }
 
-@media only screen and (min-width: 750px) {
+@media (max-width: 768px) and (min-width: 750px) {
   #skills-h3,
   .biopic {
     display: block;
+    margin-left: 25rem;
   }
-}
 
+  .welcome-message {
+    display: inline-block;
+    width: 130%;
+  }
+
+  .flex-menu {
+    padding: 0;
+    margin: 0;
+  }
+
+  .work-entry {
+    padding: 1% 5%;
+  }
+
+  ul {
+    margin-top: 2%;
+  }
+
+}
