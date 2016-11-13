@@ -1,7 +1,5 @@
 # The Frogger Game
 
-
-===============================
 ### What is this Game about:
 Help your favorite character to safely reach the water. You character needs to gather some money before reaching the water. Gather as much jewels as you can while avoiding crashing with bugs. 
 
