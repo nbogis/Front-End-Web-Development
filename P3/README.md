@@ -1,7 +1,5 @@
-The Frogger Game
+### The Frogger Game
 
-Code: Nidaa Bugis
-Original Code and resource files: Udacity
 
 ===============================
 ### What is this Game about:
